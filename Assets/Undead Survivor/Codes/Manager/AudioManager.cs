@@ -1,17 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
+    // 배경음
     [Header("#BGM")]
     public AudioClip bgmClip;
     public float bgmVolume;
     AudioSource bgmPlayer;
     AudioHighPassFilter bgmEffect;
 
+    // 효과음
     [Header("#SFX")]
     public AudioClip[] sfxClips;
     public float sfxVolume;
@@ -53,6 +53,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    // 배경음 재생
     public void PlayBgm(bool isPlay)
     {
         if (isPlay)
@@ -65,11 +66,13 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    // 배경음 필터 적용
     public void EffectBgm(bool isPlay)
     {
         bgmEffect.enabled = isPlay;
     }
 
+    // 효과음 재생
     public void PlaySfx(Sfx sfx)
     {
         for (int index = 0; index < sfxPlayer.Length; index++)

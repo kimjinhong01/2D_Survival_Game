@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Gear : MonoBehaviour
@@ -26,6 +24,7 @@ public class Gear : MonoBehaviour
         ApplyGear();
     }
 
+    // 아이템 종류에 따라 함수 실행
     void ApplyGear()
     {
         switch(type)
@@ -39,7 +38,7 @@ public class Gear : MonoBehaviour
         }
     }
 
-
+    // 무기 연사 속도 증가
     void RateUp()
     {
         Weapon[] weapons = transform.parent.GetComponentsInChildren<Weapon>();
@@ -60,6 +59,7 @@ public class Gear : MonoBehaviour
         }
     }
 
+    // 이동 속도 증가
     void SpeedUp()
     {
         float speed = 3 * Character.Speed;

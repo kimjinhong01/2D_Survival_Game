@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Scanner : MonoBehaviour
@@ -11,10 +9,12 @@ public class Scanner : MonoBehaviour
 
     void FixedUpdate()
     {
+        // 원 형태의 레이로 근처 오브젝트들 감지
         targets = Physics2D.CircleCastAll(transform.position, scanRange, Vector2.zero, 0, targetLayer);
         nearestTarget = GetNearest();
     }
 
+    // 가장 가까운 오브젝트 반환
     Transform GetNearest()
     {
         Transform result = null;

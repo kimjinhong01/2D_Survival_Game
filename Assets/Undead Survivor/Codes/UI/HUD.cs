@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +17,7 @@ public class HUD : MonoBehaviour
 
     void LateUpdate()
     {
+        // UI 타입에 따라 업데이트
         switch (type)
         {
             case InfoType.Exp:

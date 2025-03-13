@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,6 +25,7 @@ public class Item : MonoBehaviour
         textName.text = data.itemName;
     }
 
+    // 아이템 종류에 따라 미리 텍스트 설정
     void OnEnable()
     {
         textLevel.text = "Lv." + (level + 1);
@@ -46,6 +45,7 @@ public class Item : MonoBehaviour
                 break;
         }
     }
+    // 선택시 종류에 따라 효과 적용
     public void OnClick()
     {
         switch (data.itemType)

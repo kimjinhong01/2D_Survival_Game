@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -32,6 +31,7 @@ public class GameManager : MonoBehaviour
         // 이제 GameManager.instance 호출 가능
     }
 
+    // 게임 시작 (초기화)
     public void GameStart(int id)
     {
         playerId = id;
@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
 
         player.gameObject.SetActive(true);
 
+        // 캐릭터에 따라 일부 스탯 미리 레벨업
         uiLevelUp.Select(playerId % 2);
         Resume();
 
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
         AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
     }
 
+    // 게임 오버
     public void GameOver()
     {
         StartCoroutine(GameOverRoutine());
@@ -57,6 +59,7 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
+        // UI 출력
         uiResult.gameObject.SetActive(true);
         uiResult.Lose();
         Stop();
@@ -65,6 +68,7 @@ public class GameManager : MonoBehaviour
         AudioManager.instance.PlaySfx(AudioManager.Sfx.Lose);
     }
 
+    // 게임 클리어
     public void GameVictory()
     {
         StartCoroutine(GameVictoryRoutine());
@@ -77,6 +81,7 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
+        // UI 출력
         uiResult.gameObject.SetActive(true);
         uiResult.Win();
         Stop();
@@ -84,7 +89,8 @@ public class GameManager : MonoBehaviour
         AudioManager.instance.PlayBgm(false);
         AudioManager.instance.PlaySfx(AudioManager.Sfx.Win);
     }
-
+    
+    // 재시작
     public void GameRetry()
     {
         SceneManager.LoadScene(0);
@@ -97,6 +103,7 @@ public class GameManager : MonoBehaviour
 
         gameTime += Time.deltaTime;
 
+        // 클리어
         if (gameTime > maxGameTime)
         {
             gameTime = maxGameTime;
@@ -104,6 +111,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // 경험치 획득
     public void GetExp()
     {
         if (!isLive)
@@ -111,6 +119,7 @@ public class GameManager : MonoBehaviour
 
         exp++;
 
+        // 레벨업
         if (exp == nextExp[Mathf.Min(level, nextExp.Length - 1)])
         {
             level++;

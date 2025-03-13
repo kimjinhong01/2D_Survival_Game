@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+// 플레이어에 따라 기본 스탯이 다르다
 public class Character : MonoBehaviour
 {
     public static float Speed

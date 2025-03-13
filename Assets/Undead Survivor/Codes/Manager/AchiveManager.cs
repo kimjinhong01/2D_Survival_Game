@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AchiveManager : MonoBehaviour
@@ -15,6 +14,7 @@ public class AchiveManager : MonoBehaviour
 
     void Awake()
     {
+        // 열거형의 모든 값을 가져옴
         achives = (Achive[])Enum.GetValues(typeof(Achive));
         wait = new WaitForSecondsRealtime(5);
         if (!PlayerPrefs.HasKey("MyData"))
@@ -57,6 +57,7 @@ public class AchiveManager : MonoBehaviour
         }
     }
 
+    // PlayerPrefs를 활용하여 Lock/Unlock 관리
     void CheckAchive(Achive achive)
     {
         bool isAchive = false;
