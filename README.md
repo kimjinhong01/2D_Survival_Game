@@ -71,7 +71,7 @@ cd 2D_Survival_Game
 ## 📸 스크린샷 & 영상
 
 ### 🎥 게임 플레이 영상
-[![게임 플레이 영상](https://img.youtube.com/vi/H0NfmvrV6SA/mqdefault.jpg)](https://www.youtube.com/watch?v=H0NfmvrV6SA)
+[![게임 플레이 영상](https://img.youtube.com/vi/sX6S_-nKvVg/mqdefault.jpg)](https://www.youtube.com/watch?v=sX6S_-nKvVg)
 
 ### 🖼️ 스크린샷
 
