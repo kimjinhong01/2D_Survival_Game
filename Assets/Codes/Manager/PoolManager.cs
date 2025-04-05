@@ -3,49 +3,49 @@ using UnityEngine;
 
 public class PoolManager : MonoBehaviour
 {
-    // ÇÁ¸®ÆÕµéÀ» º¸°üÇÒ º¯¼ö
+    // í”„ë¦¬íŒ¹ë“¤ì„ ë³´ê´€í•  ë³€ìˆ˜
     public GameObject[] prefabs;
 
-    // Ç® ´ã´çÀ» ÇÏ´Â ¸®½ºÆ®µé
+    // í’€ ë‹´ë‹¹ì„ í•˜ëŠ” ë¦¬ìŠ¤íŠ¸ë“¤
     List<GameObject>[] pools;
 
     void Awake()
     {
-        // ÇÁ¸®ÆÕÀÌ µÎ °³¸é Ç®µµ µÎ °³
+        // í”„ë¦¬íŒ¹ì´ ë‘ ê°œë©´ í’€ë„ ë‘ ê°œ
         pools = new List<GameObject>[prefabs.Length];
 
-        // ¸®½ºÆ®¿¡ ÀÖ´Â ¸ğµç µ¥ÀÌÅÍ ÃÊ±âÈ­
+        // ë¦¬ìŠ¤íŠ¸ì— ìˆëŠ” ëª¨ë“  ë°ì´í„° ì´ˆê¸°í™”
         for (int index = 0; index < pools.Length; index++)
         {
             pools[index] = new List<GameObject>();
         }
     }
 
-    // °ÔÀÓ ¿ÀºêÁ§Æ®¸¦ ¹İÈ¯ÇÏ´Â ÇÔ¼ö
+    // ê²Œì„ ì˜¤ë¸Œì íŠ¸ë¥¼ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜
     public GameObject Get(int index)
     {
-        // ³î°íÀÖ´Â ¿ÀºêÁ§Æ® ÇÏ³ª¸¦ ¼±ÅÃÇÏ´Â º¯¼ö
+        // ë†€ê³ ìˆëŠ” ì˜¤ë¸Œì íŠ¸ í•˜ë‚˜ë¥¼ ì„ íƒí•˜ëŠ” ë³€ìˆ˜
         GameObject select = null;
 
-        // ¼±ÅÃÇÑ Ç®ÀÇ ³î°í (ºñÈ°¼ºÈ­ µÈ) ÀÖ´Â °ÔÀÓ¿ÀºêÁ§Æ® Á¢±Ù
-        foreach (GameObject item in pools[index]) // ¹è¿­, ¸®½ºÆ®µéÀÇ µ¥ÀÌÅÍ¸¦ ¼øÂ÷ÀûÀ¸·Î Á¢±ÙÇÏ´Â ¹İº¹¹®
+        // ì„ íƒí•œ í’€ì˜ ë†€ê³  (ë¹„í™œì„±í™” ëœ) ìˆëŠ” ê²Œì„ì˜¤ë¸Œì íŠ¸ ì ‘ê·¼
+        foreach (GameObject item in pools[index]) // ë°°ì—´, ë¦¬ìŠ¤íŠ¸ë“¤ì˜ ë°ì´í„°ë¥¼ ìˆœì°¨ì ìœ¼ë¡œ ì ‘ê·¼í•˜ëŠ” ë°˜ë³µë¬¸
         {
-            // ³»¿ë¹° ¿ÀºêÁ§Æ®°¡ ºñÈ²¼ºÈ­(´ë±â »óÅÂ)ÀÎÁö È®ÀÎ
+            // ë‚´ìš©ë¬¼ ì˜¤ë¸Œì íŠ¸ê°€ ë¹„í™©ì„±í™”(ëŒ€ê¸° ìƒíƒœ)ì¸ì§€ í™•ì¸
             if (!item.activeSelf)
             {
-                // ¹ß°ßÇÏ¸é select º¯¼ö¿¡ ÇÒ´ç
+                // ë°œê²¬í•˜ë©´ select ë³€ìˆ˜ì— í• ë‹¹
                 select = item;
                 select.SetActive(true);
                 break;
             }
         }
 
-        // ¸ø Ã£¾ÒÀ¸¸é
+        // ëª» ì°¾ì•˜ìœ¼ë©´
         if (!select)
         {
-            // »õ·Ó°Ô »ı¼ºÇÏ°í select º¯¼ö¿¡ ÇÒ´ç
-            select = Instantiate(prefabs[index], transform); // ¿øº» ¿ÀºêÁ§Æ®¸¦ º¹Á¦ÇÏ¿© »ı¼ºÇÏ´Â ÇÔ¼ö
-            pools[index].Add(select); // »ı¼ºµÈ ¿ÀºêÁ§Æ®´Â ÇØ´ç ¿ÀºêÁ§Æ® Ç® ¸®½ºÆ®¿¡ Add ÇÔ¼ö·Î Ãß°¡
+            // ìƒˆë¡­ê²Œ ìƒì„±í•˜ê³  select ë³€ìˆ˜ì— í• ë‹¹
+            select = Instantiate(prefabs[index], transform); // ì›ë³¸ ì˜¤ë¸Œì íŠ¸ë¥¼ ë³µì œí•˜ì—¬ ìƒì„±í•˜ëŠ” í•¨ìˆ˜
+            pools[index].Add(select); // ìƒì„±ëœ ì˜¤ë¸Œì íŠ¸ëŠ” í•´ë‹¹ ì˜¤ë¸Œì íŠ¸ í’€ ë¦¬ìŠ¤íŠ¸ì— Add í•¨ìˆ˜ë¡œ ì¶”ê°€
         }
 
         return select;

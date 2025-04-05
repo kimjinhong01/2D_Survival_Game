@@ -10,11 +10,11 @@ public class AchiveManager : MonoBehaviour
 
     enum Achive { UnlockPotato, UnlockBean }
     Achive[] achives;
-    WaitForSecondsRealtime wait; // ¸ØÃßÁö ¾Ê´Â ½Ã°£
+    WaitForSecondsRealtime wait; // ë©ˆì¶”ì§€ ì•ŠëŠ” ì‹œê°„
 
     void Awake()
     {
-        // ¿­°ÅÇüÀÇ ¸ğµç °ªÀ» °¡Á®¿È
+        // ì—´ê±°í˜•ì˜ ëª¨ë“  ê°’ì„ ê°€ì ¸ì˜´
         achives = (Achive[])Enum.GetValues(typeof(Achive));
         wait = new WaitForSecondsRealtime(5);
         if (!PlayerPrefs.HasKey("MyData"))
@@ -57,7 +57,7 @@ public class AchiveManager : MonoBehaviour
         }
     }
 
-    // PlayerPrefs¸¦ È°¿ëÇÏ¿© Lock/Unlock °ü¸®
+    // PlayerPrefsë¥¼ í™œìš©í•˜ì—¬ Lock/Unlock ê´€ë¦¬
     void CheckAchive(Achive achive)
     {
         bool isAchive = false;

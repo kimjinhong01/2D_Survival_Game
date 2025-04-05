@@ -35,13 +35,13 @@ public class LevelUp : MonoBehaviour
 
     void Next()
     {
-        // 1. ¸ğµç ¾ÆÀÌÅÛ ºñÈ°¼ºÈ­
+        // 1. ëª¨ë“  ì•„ì´í…œ ë¹„í™œì„±í™”
         foreach (Item item in items)
         {
             item.gameObject.SetActive(false);
         }
 
-        // 2. ±× Áß¿¡¼­ ·£´ı 3°³ ¾ÆÀÌÅÛ È°¼ºÈ­
+        // 2. ê·¸ ì¤‘ì—ì„œ ëœë¤ 3ê°œ ì•„ì´í…œ í™œì„±í™”
         int[] ran = new int[3];
         while(true)
         {
@@ -57,7 +57,7 @@ public class LevelUp : MonoBehaviour
         {
             Item ranItem = items[ran[index]];
 
-            // 3. ¸¸·¾ ¾ÆÀÌÅÛÀÇ °æ¿ì´Â ¼Òºñ¾ÆÀÌÅÛÀ¸·Î ´ëÃ¼
+            // 3. ë§Œë ™ ì•„ì´í…œì˜ ê²½ìš°ëŠ” ì†Œë¹„ì•„ì´í…œìœ¼ë¡œ ëŒ€ì²´
             if (ranItem.level == ranItem.data.damages.Length)
             {
                 items[4].gameObject.SetActive(true);

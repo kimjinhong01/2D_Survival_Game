@@ -24,7 +24,7 @@ public class Gear : MonoBehaviour
         ApplyGear();
     }
 
-    // ¾ÆÀÌÅÛ Á¾·ù¿¡ µû¶ó ÇÔ¼ö ½ÇÇà
+    // ì•„ì´í…œ ì¢…ë¥˜ì— ë”°ë¼ í•¨ìˆ˜ ì‹¤í–‰
     void ApplyGear()
     {
         switch(type)
@@ -38,7 +38,7 @@ public class Gear : MonoBehaviour
         }
     }
 
-    // ¹«±â ¿¬»ç ¼Óµµ Áõ°¡
+    // ë¬´ê¸° ì—°ì‚¬ ì†ë„ ì¦ê°€
     void RateUp()
     {
         Weapon[] weapons = transform.parent.GetComponentsInChildren<Weapon>();
@@ -59,7 +59,7 @@ public class Gear : MonoBehaviour
         }
     }
 
-    // ÀÌµ¿ ¼Óµµ Áõ°¡
+    // ì´ë™ ì†ë„ ì¦ê°€
     void SpeedUp()
     {
         float speed = 3 * Character.Speed;

@@ -25,7 +25,7 @@ public class Item : MonoBehaviour
         textName.text = data.itemName;
     }
 
-    // ¾ÆÀÌÅÛ Á¾·ù¿¡ µû¶ó ¹Ì¸® ÅØ½ºÆ® ¼³Á¤
+    // ì•„ì´í…œ ì¢…ë¥˜ì— ë”°ë¼ ë¯¸ë¦¬ í…ìŠ¤íŠ¸ ì„¤ì •
     void OnEnable()
     {
         textLevel.text = "Lv." + (level + 1);
@@ -45,7 +45,7 @@ public class Item : MonoBehaviour
                 break;
         }
     }
-    // ¼±ÅÃ½Ã Á¾·ù¿¡ µû¶ó È¿°ú Àû¿ë
+    // ì„ íƒì‹œ ì¢…ë¥˜ì— ë”°ë¼ íš¨ê³¼ ì ìš©
     public void OnClick()
     {
         switch (data.itemType)

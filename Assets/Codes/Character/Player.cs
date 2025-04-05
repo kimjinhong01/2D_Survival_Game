@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
         if (!GameManager.instance.isLive)
             return;
 
-        // Å°º¸µå ÀÔ·Â¹Ş¾Æ¼­ Vector2°ª¿¡ ³Ö±â
+        // í‚¤ë³´ë“œ ì…ë ¥ë°›ì•„ì„œ Vector2ê°’ì— ë„£ê¸°
         inputVec.x = Input.GetAxisRaw("Horizontal");
         inputVec.y = Input.GetAxisRaw("Vertical");
     }
@@ -65,30 +65,30 @@ public class Player : MonoBehaviour
             }
         }
 
-        // ¸ğµç ¹æÇâÀÇ ¼Óµµ¸¦ °°°Ô normalized X ¼Óµµ
+        // ëª¨ë“  ë°©í–¥ì˜ ì†ë„ë¥¼ ê°™ê²Œ normalized X ì†ë„
         Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime;
         rigid.MovePosition(rigid.position + nextVec);
     }
 
     void LateUpdate()
     {
-        // Speed ÆÄ¶ó¹ÌÅÍ°ªÀ» vector ÀÚÃ¼ÀÇ Å©±â°ªÀ¸·Î ¼³Á¤
+        // Speed íŒŒë¼ë¯¸í„°ê°’ì„ vector ìì²´ì˜ í¬ê¸°ê°’ìœ¼ë¡œ ì„¤ì •
         anim.SetFloat("Speed", inputVec.magnitude);
 
-        // ÁÂ¿ì ¹æÇâÅ° ´­·¶À»¶§
+        // ì¢Œìš° ë°©í–¥í‚¤ ëˆŒë €ì„ë•Œ
         if (inputVec.x != 0)
         {
-            // ÁÂÃø ¹æÇâÅ°¸é true
+            // ì¢Œì¸¡ ë°©í–¥í‚¤ë©´ true
             spriter.flipX = inputVec.x < 0;
         }
     }
 
-    // Collider¶û Ãæµ¹ ÁßÀÏ¶§ ½ÇÇà
+    // Colliderë‘ ì¶©ëŒ ì¤‘ì¼ë•Œ ì‹¤í–‰
     void OnCollisionStay2D(Collision2D collision)
     {
         if (!GameManager.instance.isLive)
             return;
-        // »ì¾ÆÀÖ´Ù¸é ¾Æ·¡ ½ÇÇà
+        // ì‚´ì•„ìˆë‹¤ë©´ ì•„ë˜ ì‹¤í–‰
 
         anim.SetTrigger("Hit");
         GameManager.instance.health -= Time.deltaTime * 10;

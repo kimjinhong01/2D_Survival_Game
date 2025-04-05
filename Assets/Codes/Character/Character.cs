@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// ÇÃ·¹ÀÌ¾î¿¡ µû¶ó ±âº» ½ºÅÈÀÌ ´Ù¸£´Ù
+// í”Œë ˆì´ì–´ì— ë”°ë¼ ê¸°ë³¸ ìŠ¤íƒ¯ì´ ë‹¤ë¥´ë‹¤
 public class Character : MonoBehaviour
 {
     public static float Speed

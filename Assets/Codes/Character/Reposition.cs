@@ -2,34 +2,34 @@ using UnityEngine;
 
 public class Reposition : MonoBehaviour
 {
-    // Collider ³ª°¡¸é ½ÇÇà
+    // Collider ë‚˜ê°€ë©´ ì‹¤í–‰
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Area")) // CompareTag : ÅÂ±× ºñ±³
+        if (!collision.CompareTag("Area")) // CompareTag : íƒœê·¸ ë¹„êµ
             return;
-        // Area°¡ ¹ş¾î³µ´Ù¸é ¾Æ·¡ ¸í·É¾î ½ÇÇà
+        // Areaê°€ ë²—ì–´ë‚¬ë‹¤ë©´ ì•„ë˜ ëª…ë ¹ì–´ ì‹¤í–‰
 
         Vector3 playerPos = GameManager.instance.player.transform.position;
-        Vector3 myPos = transform.position; // Å¸ÀÏ¸Ê À§Ä¡
+        Vector3 myPos = transform.position; // íƒ€ì¼ë§µ ìœ„ì¹˜
         
         switch (transform.tag)
         {
-            case "Ground": // Area°¡ Å¸ÀÏ¸ÊÀ» ¹ş¾î³µ´Ù¸é
-                float diffX = playerPos.x - myPos.x; // ÁÂ¿ì °Å¸®
-                float diffY = playerPos.y - myPos.y; // »óÇÏ °Å¸®
-                float dirX = diffX < 0 ? -1 : 1; // ÁÂ¿ì ¹æÇâ
-                float dirY = diffY < 0 ? -1 : 1; // »óÇÏ ¹æÇâ
-                diffX = Mathf.Abs(diffX); // Abs : Àı´ñ°ª
+            case "Ground": // Areaê°€ íƒ€ì¼ë§µì„ ë²—ì–´ë‚¬ë‹¤ë©´
+                float diffX = playerPos.x - myPos.x; // ì¢Œìš° ê±°ë¦¬
+                float diffY = playerPos.y - myPos.y; // ìƒí•˜ ê±°ë¦¬
+                float dirX = diffX < 0 ? -1 : 1; // ì¢Œìš° ë°©í–¥
+                float dirY = diffY < 0 ? -1 : 1; // ìƒí•˜ ë°©í–¥
+                diffX = Mathf.Abs(diffX); // Abs : ì ˆëŒ“ê°’
                 diffY = Mathf.Abs(diffY);
 
-                if (diffX > diffY) // ÁÂ¿ì °Å¸®°¡ »óÇÏ °Å¸®º¸´Ù ¸Ö¸é
+                if (diffX > diffY) // ì¢Œìš° ê±°ë¦¬ê°€ ìƒí•˜ ê±°ë¦¬ë³´ë‹¤ ë©€ë©´
                 {
-                    // Å¸ÀÏÀ» ÁÂ¿ì·Î ¿Å±ä´Ù, Translate : ÇØ´ç º¤ÅÍ¸¸Å­ ÀÌµ¿
+                    // íƒ€ì¼ì„ ì¢Œìš°ë¡œ ì˜®ê¸´ë‹¤, Translate : í•´ë‹¹ ë²¡í„°ë§Œí¼ ì´ë™
                     transform.Translate(Vector3.right * dirX * 80);
                 }
-                if (diffY > diffX) // »óÇÏ °Å¸®°¡ ÁÂ¿ì °Å¸®º¸´Ù ¸Ö¸é
+                if (diffY > diffX) // ìƒí•˜ ê±°ë¦¬ê°€ ì¢Œìš° ê±°ë¦¬ë³´ë‹¤ ë©€ë©´
                 {
-                    // Å¸ÀÏÀ» »óÇÏ·Î ¿Å±ä´Ù
+                    // íƒ€ì¼ì„ ìƒí•˜ë¡œ ì˜®ê¸´ë‹¤
                     transform.Translate(Vector3.up * dirY * 80);
                 }
                 break;

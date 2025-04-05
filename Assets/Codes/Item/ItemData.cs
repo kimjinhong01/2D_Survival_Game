@@ -1,13 +1,13 @@
 using UnityEngine;
 
-// ItemÀÌ¶ó´Â Data¿¡¼ÂÀ» ¸¸µé ¼ö ÀÖ°Ô ¼³Á¤
+// Itemì´ë¼ëŠ” Dataì—ì…‹ì„ ë§Œë“¤ ìˆ˜ ìˆê²Œ ì„¤ì •
 [CreateAssetMenu(fileName = "Item", menuName = "Scriptable Object/ItemData")]
 public class ItemData : ScriptableObject
 {
-    // ¾ÆÀÌÅÛ Á¾·ù
+    // ì•„ì´í…œ ì¢…ë¥˜
     public enum ItemType { Melee, Range, Glove, Shoe, Heal }
 
-    // ±âº» Á¤º¸
+    // ê¸°ë³¸ ì •ë³´
     [Header("# Main Info")]
     public ItemType itemType;
     public int itemId;
@@ -16,14 +16,14 @@ public class ItemData : ScriptableObject
     public string itemDesc;
     public Sprite itemIcon;
 
-    // ·¹º§ µ¥ÀÌÅÍ
+    // ë ˆë²¨ ë°ì´í„°
     [Header("# Level Data")]
     public float baseDamage;
     public int baseCount;
     public float[] damages;
     public int[] counts;
 
-    // ¹«±â
+    // ë¬´ê¸°
     [Header("# Weapon")]
     public GameObject projectile;
     public Sprite hand;

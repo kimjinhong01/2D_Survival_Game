@@ -19,17 +19,17 @@ public class Hand : MonoBehaviour
 
     void LateUpdate()
     {
-        spriter.sprite = null; // ÀÓ½Ã ¹æÆí
+        spriter.sprite = null; // ì„ì‹œ ë°©í¸
 
         bool isReverse = player.flipX;
 
-        if (isLeft) // ±ÙÁ¢ ¹«±â
+        if (isLeft) // ê·¼ì ‘ ë¬´ê¸°
         {
             transform.localRotation = isReverse ? leftRotReverse : leftRot;
             spriter.flipY = isReverse;
             spriter.sortingOrder = isReverse ? 4 : 6;
         }
-        else // ¿ø°Å¸® ¹«±â
+        else // ì›ê±°ë¦¬ ë¬´ê¸°
         {
             transform.localPosition = isReverse ? rightPosReverse : rightPos;
             spriter.flipX = isReverse;

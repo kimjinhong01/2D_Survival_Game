@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public int id; // ¹«±â ID
-    public int prefabId; // ÇÁ¸®Æé ID
-    public float damage; // µ¥¹ÌÁö
-    public int count; // °³¼ö
-    public float speed; // ¼Óµµ
+    public int id; // ë¬´ê¸° ID
+    public int prefabId; // í”„ë¦¬í© ID
+    public float damage; // ë°ë¯¸ì§€
+    public int count; // ê°œìˆ˜
+    public float speed; // ì†ë„
 
     float timer;
     Player player;
@@ -24,7 +24,7 @@ public class Weapon : MonoBehaviour
         switch (id)
         {
             case 0:
-                // z°ª ¾ç¼ö·Î ¾²·Á¸é Vector3.back
+                // zê°’ ì–‘ìˆ˜ë¡œ ì“°ë ¤ë©´ Vector3.back
                 transform.Rotate(Vector3.back, speed * Time.deltaTime);
                 break;
             default:
@@ -62,7 +62,7 @@ public class Weapon : MonoBehaviour
         damage = data.baseDamage * Character.Damage;
         count = data.baseCount + Character.Count;
 
-        // ÇÁ¸®ÆÕ Ç®¿¡¼­ µ·´Ù
+        // í”„ë¦¬íŒ¹ í’€ì—ì„œ ëˆë‹¤
         for (int index = 0; index < GameManager.instance.pool.prefabs.Length; index++)
         {
             if (data.projectile == GameManager.instance.pool.prefabs[index])
@@ -93,31 +93,31 @@ public class Weapon : MonoBehaviour
 
     void Batch()
     {
-        // ¹«±â °³¼ö¸¸Å­ ¹İº¹ÇÏ¸ç
+        // ë¬´ê¸° ê°œìˆ˜ë§Œí¼ ë°˜ë³µí•˜ë©°
         for (int index = 0; index < count; index++)
         {
             Transform bullet;
 
-            // ¾ÆÁ÷ °¡Áö°í ÀÖ´Â°Ô ÀÖÀ¸¸é ±×°É ½á¶ó
+            // ì•„ì§ ê°€ì§€ê³  ìˆëŠ”ê²Œ ìˆìœ¼ë©´ ê·¸ê±¸ ì¨ë¼
             if (index < transform.childCount)
             {
                 bullet = transform.GetChild(index);
             }
             else
             {
-                // Ç®¸Å´ÏÀú¿¡ Æ¯Á¤ ¹«±â¸¦ Ãß°¡ÇÑ´Ù
+                // í’€ë§¤ë‹ˆì €ì— íŠ¹ì • ë¬´ê¸°ë¥¼ ì¶”ê°€í•œë‹¤
                 bullet = GameManager.instance.pool.Get(prefabId).transform;
-                bullet.parent = transform; // bullet ÀÚ½ÅÀ» weaponÀÇ ÀÚ½ÄÀ¸·Î
+                bullet.parent = transform; // bullet ìì‹ ì„ weaponì˜ ìì‹ìœ¼ë¡œ
             }
 
-            // À§Ä¡ °¢µµ 0 0 0À¸·Î ¸¸µê
+            // ìœ„ì¹˜ ê°ë„ 0 0 0ìœ¼ë¡œ ë§Œë“¦
             bullet.localPosition = Vector3.zero;
             bullet.localRotation = Quaternion.identity;
 
-            // zÃàÀ¸·Î 360µµ ³ª´©±â ¸î
+            // zì¶•ìœ¼ë¡œ 360ë„ ë‚˜ëˆ„ê¸° ëª‡
             Vector3 rotVec = Vector3.forward * 360 * index / count;
             bullet.Rotate(rotVec);
-            // Translate ÇÔ¼ö·Î ÀÚ½ÅÀÇ À§ÂÊÀ¸·Î ÀÌµ¿ space world ±âÁØ
+            // Translate í•¨ìˆ˜ë¡œ ìì‹ ì˜ ìœ„ìª½ìœ¼ë¡œ ì´ë™ space world ê¸°ì¤€
             bullet.Translate(bullet.up * 1.5f, Space.World);
             bullet.GetComponent<Bullet>().Init(damage, -100, Vector3.zero); // -1 is infinity Per.
         }

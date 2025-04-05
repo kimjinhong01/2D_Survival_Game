@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
     public float speed;
     public float health;
     public float maxHealth;
-    public RuntimeAnimatorController[] animCon; // ¾Ö´Ï¸ŞÀÌÅÍ ÄÁÆ®·Ñ·¯
+    public RuntimeAnimatorController[] animCon; // ì• ë‹ˆë©”ì´í„° ì»¨íŠ¸ë¡¤ëŸ¬
     public Rigidbody2D target;
 
     bool isLive;
@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     Collider2D coll;
     Animator anim;
     SpriteRenderer spriter;
-    WaitForFixedUpdate wait; // ´ÙÀ½ FixedUpdate ÇÒ¶§±îÁö ±â´Ù¸²
+    WaitForFixedUpdate wait; // ë‹¤ìŒ FixedUpdate í• ë•Œê¹Œì§€ ê¸°ë‹¤ë¦¼
 
     void Awake()
     {
@@ -30,23 +30,23 @@ public class Enemy : MonoBehaviour
     {
         if (!GameManager.instance.isLive)
             return;
-        // °ÔÀÓÀÌ »ì¾ÆÀÖ´Ù¸é ½ÇÇà
+        // ê²Œì„ì´ ì‚´ì•„ìˆë‹¤ë©´ ì‹¤í–‰
 
-        // ÀûÀÌ Á×¾ú°Å³ª ÇöÀç ¾Ö´Ï¸ŞÀÌÅÍ »óÅÂ°¡ Hit ÀÌ¸é µ¹¾Æ°¡±â
+        // ì ì´ ì£½ì—ˆê±°ë‚˜ í˜„ì¬ ì• ë‹ˆë©”ì´í„° ìƒíƒœê°€ Hit ì´ë©´ ëŒì•„ê°€ê¸°
         if (!isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
             return;
 
         Vector2 dirVec = target.position - rigid.position;
         Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime;
-        rigid.MovePosition(rigid.position + nextVec); // ÇØ´ç À§Ä¡·Î ÀÌµ¿
-        rigid.velocity = Vector2.zero; // ¹°¸® ¼Óµµ°¡ ÀÌµ¿¿¡ ¿µÇâÀ» ÁÖÁö ¾Êµµ·Ï
+        rigid.MovePosition(rigid.position + nextVec); // í•´ë‹¹ ìœ„ì¹˜ë¡œ ì´ë™
+        rigid.velocity = Vector2.zero; // ë¬¼ë¦¬ ì†ë„ê°€ ì´ë™ì— ì˜í–¥ì„ ì£¼ì§€ ì•Šë„ë¡
     }
 
     void LateUpdate()
     {
         if (!GameManager.instance.isLive)
             return;
-        // °ÔÀÓÀÌ »ì¾ÆÀÖ´Ù¸é ½ÇÇà
+        // ê²Œì„ì´ ì‚´ì•„ìˆë‹¤ë©´ ì‹¤í–‰
 
         if (health <= 0)
         {
@@ -59,15 +59,15 @@ public class Enemy : MonoBehaviour
 
         if (!isLive)
             return;
-        // ÀûÀÌ »ì¾ÆÀÖ´Ù¸é ½ÇÇà
+        // ì ì´ ì‚´ì•„ìˆë‹¤ë©´ ì‹¤í–‰
 
-        // ÇÃ·¹ÀÌ¾î°¡ ¿ŞÂÊ¿¡ ÀÖ´Ù¸é true, µÚÁı±â
+        // í”Œë ˆì´ì–´ê°€ ì™¼ìª½ì— ìˆë‹¤ë©´ true, ë’¤ì§‘ê¸°
         spriter.flipX = target.position.x < rigid.position.x;
     }
 
     void OnEnable()
     {
-        // È°¼ºÈ­µÇ¸é targetÀ» player·Î ¼³Á¤
+        // í™œì„±í™”ë˜ë©´ targetì„ playerë¡œ ì„¤ì •
         target = GameManager.instance.player.GetComponent<Rigidbody2D>();
         isLive = true;
         coll.enabled = true;
@@ -79,7 +79,7 @@ public class Enemy : MonoBehaviour
 
     public void Init(SpawnData data)
     {
-        // ¾Ö´Ï¸ŞÀÌÅÍ¸¦ data Å¸ÀÔ¿¡ ¸ÂÃç ¼³Á¤
+        // ì• ë‹ˆë©”ì´í„°ë¥¼ data íƒ€ì…ì— ë§ì¶° ì„¤ì •
         anim.runtimeAnimatorController = animCon[data.spriteType];
         speed = data.speed;
         maxHealth = data.health;
@@ -94,7 +94,7 @@ public class Enemy : MonoBehaviour
         if (collision.CompareTag("HitBox"))
         {
             health -= 4.5f;
-            Debug.Log("±ÙÁ¢°ø°İ ¸ÂÀ½!");
+            Debug.Log("ê·¼ì ‘ê³µê²© ë§ìŒ!");
         }
         else
         {
@@ -115,7 +115,7 @@ public class Enemy : MonoBehaviour
             spriter.sortingOrder = 1;
             anim.SetBool("Dead", true);
 
-            if (GameManager.instance.isLive) // ³¡³ª°í ´Ù µÚÁ³À»¶§ »ç¿îµå Å×·¯ ¾È´çÇÏ°Ô
+            if (GameManager.instance.isLive) // ëë‚˜ê³  ë‹¤ ë’¤ì¡Œì„ë•Œ ì‚¬ìš´ë“œ í…ŒëŸ¬ ì•ˆë‹¹í•˜ê²Œ
             {
                 GameManager.instance.kill++;
                 GameManager.instance.GetExp();
@@ -126,7 +126,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator KnockBack()
     {
-        yield return wait; // ´ÙÀ½ ÇÏ³ªÀÇ ¹°¸® ÇÁ·¹ÀÓ µô·¹ÀÌ
+        yield return wait; // ë‹¤ìŒ í•˜ë‚˜ì˜ ë¬¼ë¦¬ í”„ë ˆì„ ë”œë ˆì´
         Vector3 playerPos = GameManager.instance.player.transform.position;
         Vector3 dirVec = transform.position - playerPos;
         rigid.AddForce(dirVec.normalized * 1, ForceMode2D.Impulse);

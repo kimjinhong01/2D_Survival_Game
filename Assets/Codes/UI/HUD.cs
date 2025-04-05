@@ -17,7 +17,7 @@ public class HUD : MonoBehaviour
 
     void LateUpdate()
     {
-        // UI Å¸ÀÔ¿¡ µû¶ó ¾÷µ¥ÀÌÆ®
+        // UI íƒ€ì…ì— ë”°ë¼ ì—…ë°ì´íŠ¸
         switch (type)
         {
             case InfoType.Exp:

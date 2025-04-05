@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // static : Á¤ÀûÀ¸·Î »ç¿ëÇÏ°Ú´Ù´Â Å°¿öµå, ¹Ù·Î ¸Ş¸ğ¸®¿¡ ¾ñ¾î¹ö¸²
+    // static : ì •ì ìœ¼ë¡œ ì‚¬ìš©í•˜ê² ë‹¤ëŠ” í‚¤ì›Œë“œ, ë°”ë¡œ ë©”ëª¨ë¦¬ì— ì–¹ì–´ë²„ë¦¼
     public static GameManager instance;
     [Header("# Game Control")]
     public bool isLive;
@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     public int[] nextExp = { 10, 30, 60, 100, 150, 210, 360, 450, 600 };
     [Header("# GameObject")]
     public PoolManager pool;
-    public Player player; // player¸¦ ¾îµğ¼­µç Á¢±Ù °¡´ÉÇÏ°Ô
+    public Player player; // playerë¥¼ ì–´ë””ì„œë“  ì ‘ê·¼ ê°€ëŠ¥í•˜ê²Œ
     public LevelUp uiLevelUp;
     public Result uiResult;
     public GameObject enemyCleaner;
@@ -28,10 +28,10 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        // ÀÌÁ¦ GameManager.instance È£Ãâ °¡´É
+        // ì´ì œ GameManager.instance í˜¸ì¶œ ê°€ëŠ¥
     }
 
-    // °ÔÀÓ ½ÃÀÛ (ÃÊ±âÈ­)
+    // ê²Œì„ ì‹œì‘ (ì´ˆê¸°í™”)
     public void GameStart(int id)
     {
         playerId = id;
@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
 
         player.gameObject.SetActive(true);
 
-        // Ä³¸¯ÅÍ¿¡ µû¶ó ÀÏºÎ ½ºÅÈ ¹Ì¸® ·¹º§¾÷
+        // ìºë¦­í„°ì— ë”°ë¼ ì¼ë¶€ ìŠ¤íƒ¯ ë¯¸ë¦¬ ë ˆë²¨ì—…
         uiLevelUp.Select(playerId % 2);
         Resume();
 
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
     }
 
-    // °ÔÀÓ ¿À¹ö
+    // ê²Œì„ ì˜¤ë²„
     public void GameOver()
     {
         StartCoroutine(GameOverRoutine());
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        // UI Ãâ·Â
+        // UI ì¶œë ¥
         uiResult.gameObject.SetActive(true);
         uiResult.Lose();
         Stop();
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
         AudioManager.instance.PlaySfx(AudioManager.Sfx.Lose);
     }
 
-    // °ÔÀÓ Å¬¸®¾î
+    // ê²Œì„ í´ë¦¬ì–´
     public void GameVictory()
     {
         StartCoroutine(GameVictoryRoutine());
@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        // UI Ãâ·Â
+        // UI ì¶œë ¥
         uiResult.gameObject.SetActive(true);
         uiResult.Win();
         Stop();
@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
         AudioManager.instance.PlaySfx(AudioManager.Sfx.Win);
     }
     
-    // Àç½ÃÀÛ
+    // ì¬ì‹œì‘
     public void GameRetry()
     {
         SceneManager.LoadScene(0);
@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
 
         gameTime += Time.deltaTime;
 
-        // Å¬¸®¾î
+        // í´ë¦¬ì–´
         if (gameTime > maxGameTime)
         {
             gameTime = maxGameTime;
@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // °æÇèÄ¡ È¹µæ
+    // ê²½í—˜ì¹˜ íšë“
     public void GetExp()
     {
         if (!isLive)
@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
 
         exp++;
 
-        // ·¹º§¾÷
+        // ë ˆë²¨ì—…
         if (exp == nextExp[Mathf.Min(level, nextExp.Length - 1)])
         {
             level++;

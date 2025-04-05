@@ -15,17 +15,17 @@ public class RepositionEnemy : MonoBehaviour
             return;
 
         Vector3 playerPos = GameManager.instance.player.transform.position;
-        Vector3 myPos = transform.position; // Àû À§Ä¡
+        Vector3 myPos = transform.position; // ì  ìœ„ì¹˜
 
         switch (transform.tag)
         {
             case "Enemy":
-                if (coll.enabled) // collider°¡ È°¼ºÈ­µÇ¾î ÀÖ´Ù¸é
+                if (coll.enabled) // colliderê°€ í™œì„±í™”ë˜ì–´ ìˆë‹¤ë©´
                 {
-                    /* ÀÓ½Ã ¹æÆí
-                    Vector3 dist = playerPos - myPos; // ÇÃ·¹ÀÌ¾î¿ÍÀÇ °Å¸®
-                    Vector3 ran = new Vector3(Random.Range(-3, 3), Random.Range(-3, 3), 0); // ·£´ı À§Ä¡
-                    transform.Translate(ran + dist * 2); // ·£´ı À§Ä¡ + °Å¸® x 2 ¸¸Å­ ÀÌµ¿½ÃÅ²´Ù
+                    /* ì„ì‹œ ë°©í¸
+                    Vector3 dist = playerPos - myPos; // í”Œë ˆì´ì–´ì™€ì˜ ê±°ë¦¬
+                    Vector3 ran = new Vector3(Random.Range(-3, 3), Random.Range(-3, 3), 0); // ëœë¤ ìœ„ì¹˜
+                    transform.Translate(ran + dist * 2); // ëœë¤ ìœ„ì¹˜ + ê±°ë¦¬ x 2 ë§Œí¼ ì´ë™ì‹œí‚¨ë‹¤
                     */
 
                     this.GetComponent<Enemy>().health = 0;

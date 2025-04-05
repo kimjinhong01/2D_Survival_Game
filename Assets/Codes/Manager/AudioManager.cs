@@ -4,14 +4,14 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
-    // ¹è°æÀ½
+    // ë°°ê²½ìŒ
     [Header("#BGM")]
     public AudioClip bgmClip;
     public float bgmVolume;
     AudioSource bgmPlayer;
     AudioHighPassFilter bgmEffect;
 
-    // È¿°úÀ½
+    // íš¨ê³¼ìŒ
     [Header("#SFX")]
     public AudioClip[] sfxClips;
     public float sfxVolume;
@@ -29,7 +29,7 @@ public class AudioManager : MonoBehaviour
 
     void Init()
     {
-        // ¹è°æÀ½ ÇÃ·¹ÀÌ¾î ÃÊ±âÈ­
+        // ë°°ê²½ìŒ í”Œë ˆì´ì–´ ì´ˆê¸°í™”
         GameObject bgmObject = new GameObject("BgmPlayer");
         bgmObject.transform.parent = transform;
         bgmPlayer = bgmObject.AddComponent<AudioSource>();
@@ -39,7 +39,7 @@ public class AudioManager : MonoBehaviour
         bgmPlayer.clip = bgmClip;
         bgmEffect = Camera.main.GetComponent<AudioHighPassFilter>();
 
-        // È¿°úÀ½ ÇÃ·¹ÀÌ¾î ÃÊ±âÈ­
+        // íš¨ê³¼ìŒ í”Œë ˆì´ì–´ ì´ˆê¸°í™”
         GameObject sfxObject = new GameObject("SfxPlayer");
         sfxObject.transform.parent = transform;
         sfxPlayer = new AudioSource[channels];
@@ -53,7 +53,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    // ¹è°æÀ½ Àç»ı
+    // ë°°ê²½ìŒ ì¬ìƒ
     public void PlayBgm(bool isPlay)
     {
         if (isPlay)
@@ -66,13 +66,13 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    // ¹è°æÀ½ ÇÊÅÍ Àû¿ë
+    // ë°°ê²½ìŒ í•„í„° ì ìš©
     public void EffectBgm(bool isPlay)
     {
         bgmEffect.enabled = isPlay;
     }
 
-    // È¿°úÀ½ Àç»ı
+    // íš¨ê³¼ìŒ ì¬ìƒ
     public void PlaySfx(Sfx sfx)
     {
         for (int index = 0; index < sfxPlayer.Length; index++)

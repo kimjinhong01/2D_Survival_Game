@@ -11,10 +11,10 @@ public class Spawner : MonoBehaviour
 
     void Awake()
     {
-        // ÀÚ½ÅÀ» Æ÷ÇÔÇÑ ¸ğµç ÀÚ½ÄÀÇ Transform ÄÄÆ÷³ÍÆ®¸¦ °¡Á®¿È
+        // ìì‹ ì„ í¬í•¨í•œ ëª¨ë“  ìì‹ì˜ Transform ì»´í¬ë„ŒíŠ¸ë¥¼ ê°€ì ¸ì˜´
         spawnPoint = GetComponentsInChildren<Transform>();
         levelTime = GameManager.instance.maxGameTime / spawnData.Length;
-        // 120ÃÊ / 6°³ ¸ó½ºÅÍ¶ó¸é -> 20ÃÊ ¸¶´Ù levelÀÌ ¿Ã¶ó°£´Ù
+        // 120ì´ˆ / 6ê°œ ëª¬ìŠ¤í„°ë¼ë©´ -> 20ì´ˆ ë§ˆë‹¤ levelì´ ì˜¬ë¼ê°„ë‹¤
     }
 
     void Update()
@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour
             return;
 
         timer += Time.deltaTime;
-        // ÃÖ¼Ò°ª(ÀÎµ¦½º ¿¡·¯ Á¦°Å¿ë), ¼Ò¼öÁ¡ ¹ö¸®°í Int·Î º¯È¯(°ÔÀÓ ½Ã°£ / ¸ó½ºÅÍ ¹Ù²î´Â ½Ã°£)
+        // ìµœì†Œê°’(ì¸ë±ìŠ¤ ì—ëŸ¬ ì œê±°ìš©), ì†Œìˆ˜ì  ë²„ë¦¬ê³  Intë¡œ ë³€í™˜(ê²Œì„ ì‹œê°„ / ëª¬ìŠ¤í„° ë°”ë€ŒëŠ” ì‹œê°„)
         level = Mathf.Min(Mathf.FloorToInt(GameManager.instance.gameTime / levelTime), spawnData.Length - 1);
 
         if (timer > spawnData[level].spawnTime)
@@ -35,16 +35,16 @@ public class Spawner : MonoBehaviour
 
     void Spawn()
     {
-        // enemy°¡ 0¹øÂ°¿¡ ÀÖ±â ¶§¹®¿¡ Get(0)
+        // enemyê°€ 0ë²ˆì§¸ì— ìˆê¸° ë•Œë¬¸ì— Get(0)
         GameObject enemy = GameManager.instance.pool.Get(0);
-        // ½ºÆùÆ÷ÀÎÆ® Áß¿¡ ÇÑ °÷¿¡¼­ ·£´ıÀ¸·Î ½ºÆù (0Àº ÀÚ±â ÀÚ½ÅÀÌ¶ó 1ºÎÅÍ)
+        // ìŠ¤í°í¬ì¸íŠ¸ ì¤‘ì— í•œ ê³³ì—ì„œ ëœë¤ìœ¼ë¡œ ìŠ¤í° (0ì€ ìê¸° ìì‹ ì´ë¼ 1ë¶€í„°)
         enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
-        // enemy¿¡ ÇöÀç ·¹º§¿¡ ¸Â´Â spawnData Á¦°ø
+        // enemyì— í˜„ì¬ ë ˆë²¨ì— ë§ëŠ” spawnData ì œê³µ
         enemy.GetComponent<Enemy>().Init(spawnData[level]);
     }
 }
 
-// spawnData Å¬·¡½º »ı¼º, ¹Û¿¡¼­ ÆíÁı °¡´ÉÇÏ°Ô
+// spawnData í´ë˜ìŠ¤ ìƒì„±, ë°–ì—ì„œ í¸ì§‘ ê°€ëŠ¥í•˜ê²Œ
 [System.Serializable]
 public class SpawnData
 {

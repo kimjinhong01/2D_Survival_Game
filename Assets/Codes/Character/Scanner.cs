@@ -9,12 +9,12 @@ public class Scanner : MonoBehaviour
 
     void FixedUpdate()
     {
-        // ¿ø ÇüÅÂÀÇ ·¹ÀÌ·Î ±ÙÃ³ ¿ÀºêÁ§Æ®µé °¨Áö
+        // ì› í˜•íƒœì˜ ë ˆì´ë¡œ ê·¼ì²˜ ì˜¤ë¸Œì íŠ¸ë“¤ ê°ì§€
         targets = Physics2D.CircleCastAll(transform.position, scanRange, Vector2.zero, 0, targetLayer);
         nearestTarget = GetNearest();
     }
 
-    // °¡Àå °¡±î¿î ¿ÀºêÁ§Æ® ¹İÈ¯
+    // ê°€ì¥ ê°€ê¹Œìš´ ì˜¤ë¸Œì íŠ¸ ë°˜í™˜
     Transform GetNearest()
     {
         Transform result = null;
