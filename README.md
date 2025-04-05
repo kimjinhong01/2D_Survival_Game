@@ -68,7 +68,12 @@ cd 2D_Survival_Game
 # 유니티 프로젝트를 Unity Hub에서 열어 실행하세요.
 ```
 
-## 📸 스크린샷
+## 📸 스크린샷 & 영상
+
+### 🎥 게임 플레이 영상
+[![게임 플레이 영상](https://img.youtube.com/vi/H0NfmvrV6SA/mqdefault.jpg)](https://www.youtube.com/watch?v=H0NfmvrV6SA)
+
+### 🖼️ 스크린샷
 
 ### 캐릭터 선택 화면
 ![image](https://github.com/user-attachments/assets/967f3095-86f7-419b-95f2-e728a33ee74a)
